@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nx.nxschedule.coordinator.mapper.TaskConfigMapper">
+
+    <resultMap id="TaskConfigResultMap" type="com.nx.nxschedule.coordinator.model.entity.TaskConfig">
+            <id property="taskType" column="taskType" jdbcType="VARCHAR"/>
+            <result property="scheduleLimit" column="scheduleLimit" jdbcType="INTEGER"/>
+            <result property="maxProcessingTime" column="maxProcessingTime" jdbcType="INTEGER"/>
+            <result property="maxRetryNum" column="maxRetryNum" jdbcType="INTEGER"/>
+            <result property="retryInterval" column="retryInterval" jdbcType="INTEGER"/>
+            <result property="maxRetryInterval" column="maxRetryInterval" jdbcType="INTEGER"/>
+            <result property="createTime" column="createTime" jdbcType="TIMESTAMP"/>
+            <result property="updateTime" column="updateTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+    <select id="selectByTaskType" resultMap="TaskConfigResultMap">
+        SELECT
+            taskType,
+            scheduleLimit,
+            maxProcessingTime,
+            maxRetryNum,
+            retryInterval,
+            maxRetryInterval,
+            createTime,
+            updateTime
+        FROM task_config
+        WHERE taskType = #{taskType}
+    </select>
+
+</mapper>

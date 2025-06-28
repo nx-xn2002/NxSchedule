@@ -1,5 +1,17 @@
 spring:
   application:
     name: coordinator
+  datasource:
+    url: jdbc:mysql://localhost:3306/nx_schedule
+    username: nx-xn2002
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
 server:
   port: 8888
+
+
+mybatis:
+  mapper-locations: classpath*:mapper/**/*.xml
+  type-aliases-package: com.nx.nxschedule.coordinator.model.entity
+#  configuration:
+#    map-underscore-to-camel-case: true  # 数据库下划线转驼峰自动映射
